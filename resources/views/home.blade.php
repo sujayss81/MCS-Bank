@@ -7,7 +7,14 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/home.css')}}">
 </head>
 <body>
-	<button>Registration</button>
+	<button onclick="register();">Registration</button>
 	<button>View All Registrations</button>
+	
+
+	<script type="text/javascript">
+		function register(){
+			window.location.href = '/registration';
+		}
+	</script>
 </body>
 </html>

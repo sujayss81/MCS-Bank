@@ -17,3 +17,6 @@ Route::get('/', function () {
 
 Route::post('/auth','appController@auth');
 Route::view('/home','home')->middleware('cls');
+Route::view('/registration','registration')->middleware('cls');
+Route::post('/registration/add','appController@reg')->middleware('cls');
+
