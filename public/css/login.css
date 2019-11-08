@@ -1,0 +1,14 @@
+h1{
+	text-align: center;
+}
+div.container{
+	max-width: 30%;
+	margin-top: 12em;
+}
+input{
+	text-align: center;
+}
+div.alert{
+	margin-top: 2em;
+	text-align: center;
+}
