@@ -63,8 +63,14 @@
             </div>
             <div class="col-12 float-left text-center">
                 <input type="submit" value="Add Record" class="btn btn-primary">
+                <button onclick="back()" class="btn btn-primary">Back</button>
             </div>
         </form>
     </div>
+<script type="text/javascript">
+    function back(){
+        window.location.href = '/home';
+    }
+</script>
 </body>
 </html>

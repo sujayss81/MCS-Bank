@@ -1,36 +1,6 @@
-/*input[name="mem_no"].form-control{
-	max-width: 20%;
-}*/
-/*input[name="name"].form-control{
-	max-width: 20%;
-}*/
 input[name="dom"].form-control{
 	max-width: 40%;
 }
-/*textarea[name="address"].form-control{
-	max-width: 30%;
-}*/
-/*input[name="aadhar"].form-control{
-	max-width: 30%;
-}*/
-/*input[name="mobile"].form-control{
-	max-width: 30%;
-}*/
-/*select[name="category"].form-control{
-	max-width: 10%;
-}*/
-/*input[name="occupation"].form-control{
-	max-width: 30%;
-}*/
-/*select[name="bgroup"].form-control{
-	max-width: 10%;
-}*/
-/*input[name="age"].form-control{
-	max-width: 10%;
-}*/
-/*input[name="acc_no"].form-control{
-	max-width: 30%;
-}*/
 div.container{
 	margin-top: 3em;
 }
@@ -48,4 +18,10 @@ input.btn{
 }
 span{
 	margin-right: 2%;
+}
+button.btn{
+	margin-top: 2%;
+}
+label{
+	font-weight: 500;
 }
