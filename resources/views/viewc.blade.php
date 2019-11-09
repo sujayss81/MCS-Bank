@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/viewm.css')}}">
 </head>
 <body>
+	<button class="btn btn-warning" onclick="printscreen()">Print</button>
 	<table id="dtBasicExample" class="table table-bordered table-hover table-striped">
 		<thead>
 			<th>Membership Number</th>
@@ -40,6 +41,9 @@
 	<script type="text/javascript">
 		function back(){
         window.location.href = '/home';
+    }
+    function printscreen(){
+    	window.print();
     }
 		$(document).ready(function () {
 $('#dtBasicExample').DataTable();
