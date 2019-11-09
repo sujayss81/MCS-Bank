@@ -26,7 +26,7 @@
                 <label for="address">Address</label>
                 <textarea name="address" class="form-control" rows="6" required></textarea>
                 <label>Aadhar Number</label>
-                <input type="text" name="aadhar" class="form-control" required>
+                <input type="number" name="aadhar" class="form-control" required>
                 <label>Gender</label><br>
                 <input type="radio" name="gender" value="male" checked ><span>Male</span>
                 <input type="radio" name="gender" value="female"><span>Female</span>

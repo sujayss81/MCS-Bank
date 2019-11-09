@@ -8,12 +8,14 @@
 </head>
 <body>
 	<button onclick="register();">Registration</button>
-	<button>View All Registrations</button>
-	
+	<button onclick="clreg();">Claimants Registration</button>
 
 	<script type="text/javascript">
 		function register(){
 			window.location.href = '/registration';
+		}
+		function clreg(){
+			window.location.href = '/registration/claimants'
 		}
 	</script>
 </body>

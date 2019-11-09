@@ -7,6 +7,7 @@ use Hash;
 use Session;
 use App\auth;
 use App\member;
+use App\claim;
 class appController extends Controller
 {
     //
@@ -53,6 +54,31 @@ class appController extends Controller
 		}
 		else{
 			return redirect('/registration')->with('fail','Something Went Wrong!!');
+		}
+	}
+
+	public function creg(Request $req){
+		$mem_no = $req->input('mem_no');
+		$check = member::where('mem_no','=',$mem_no)->get();
+		if(count($check)>0){
+			$claim = new claim;
+			$claim->mem_no = $req->input('mem_no');
+			$claim->name = $req->input('name');
+			$claim->aadhar = $req->input('aadhar');
+			$claim->hname = $req->input('hname');
+			$claim->dname = $req->input('dname');
+			$claim->dcode = $req->input('dcode');
+			$claim->doa = $req->input('doa');
+			$claim->dod = $req->input('dod');
+			$claim->amt = $req->input('amt');
+			$claim->bamt = $req->input('bamt');
+
+			if($claim->save()){
+				return redirect('/registration/claimants')->with('success','Record Added');
+			}
+		}
+		else{
+			return redirect('/registration/claimants')->with('fail','Member Not Registered');
 		}
 	}
 }
