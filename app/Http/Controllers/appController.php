@@ -81,4 +81,19 @@ class appController extends Controller
 			return redirect('/registration/claimants')->with('fail','Member Not Registered');
 		}
 	}
+
+	public function viewm(){
+		$res = member::all();
+		return view('viewm',compact('res'));
+	}
+
+	public function viewc(){
+		$res = claim::all();
+		return view('viewc',compact('res'));
+	}
+
+	public function logout(){
+		Session::forget('logged_in');
+		return redirect('/');
+	}
 }

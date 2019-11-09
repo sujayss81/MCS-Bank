@@ -27,7 +27,6 @@ class CreateMemberTable extends Migration
             $table->boolean('mc');
             $table->integer('age');
             $table->string('acc_no',32);
-            $table->float('amt',10,4);
 
             $table->primary('mem_no');
             $table->unique('mobile');
