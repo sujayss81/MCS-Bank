@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Hash;
 use Session;
 use App\auth;
@@ -83,12 +84,14 @@ class appController extends Controller
 	}
 
 	public function viewm(){
-		$res = member::all();
+		// $res = member::all();
+		$res = DB::table('member')->orderby('name')->get();
 		return view('viewm',compact('res'));
 	}
 
 	public function viewc(){
-		$res = claim::all();
+		// $res = claim::all();
+		$res = DB::table('claim')->orderby('name')->get();
 		return view('viewc',compact('res'));
 	}
 

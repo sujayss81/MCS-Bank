@@ -5,10 +5,25 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/mdb/css/bootstrap.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/mdb/css/mdb.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/viewm.css')}}">
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	<style type="text/css" media="print">
+	    button.btn.NonPrintable
+	    {
+	      display: none;
+	    }
+ 	</style>
+ 	<script>
+		$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+	</script>
 </head>
 <body>
-	<button class="btn btn-warning" onclick="printscreen()">Print</button>
-	<table id="dtBasicExample" class="table table-bordered table-hover table-striped">
+	<button class="btn btn-warning NonPrintable" onclick="printscreen()">Print</button>
+	<div class="container-fluid">
+	<table id="myTable" class="table table-bordered table-hover table-striped">
 		<thead>
 			<th>Membership Number</th>
 			<th>Name</th>
@@ -24,8 +39,10 @@
 			<th>Age</th>
 			<th>SB Account Number</th>
 		</thead>
-		@foreach($res as $item)
 		<tbody>
+		@foreach($res as $item)
+
+			<tr>
 			<td>{{$item->mem_no}}</td>
 			<td>{{$item->name}}</td>
 			<td>{{$item->dom}}</td>
@@ -39,11 +56,15 @@
 			<td>{{$item->mc}}</td>
 			<td>{{$item->age}}</td>
 			<td>{{$item->acc_no}}</td>
-		</tbody>
+			</tr>
+			
 		@endforeach
+
+		</tbody>
 	</table>
+</div>
 	<div class="text-center">
-		<button onclick="back()" class="btn btn-primary">Back</button>
+		<button onclick="back()" class="btn btn-primary NonPrintable">Back</button>
 	</div>
 	<script type="text/javascript">
 		function back(){
@@ -52,10 +73,6 @@
     function printscreen(){
     	window.print();
     }
-    $(document).ready(function () {
-$('#dtBasicExample').DataTable();
-$('.dataTables_length').addClass('bs-select');
-});
 	</script>
 </body>
 </html>

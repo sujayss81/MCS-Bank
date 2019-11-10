@@ -5,8 +5,6 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/mdb/css/bootstrap.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/mdb/css/mdb.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/viewm.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/viewm.css')}}">
-	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
@@ -18,12 +16,34 @@
     }
 	</script>
 	<script>
-		$(document).ready( function () {
-    $('#myTable').DataTable();
-} );
+		$(document).ready(function(){
+		  $("#search").on("keyup", function() {
+		    var value = $(this).val().toLowerCase();
+		    $("#myTable tr").filter(function() {
+		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		    });
+		  });
+		});
 	</script>
 	<script>
-		
+		function myFunction() {
+		  var input, filter, table, tr, td, i, txtValue;
+		  input = document.getElementById("nameInput");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("myTable");
+		  tr = table.getElementsByTagName("tr");
+		  for (i = 0; i < tr.length; i++) {
+		    td = tr[i].getElementsByTagName("td")[0];
+		    if (td) {
+		      txtValue = td.textContent || td.innerText;
+		      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		        tr[i].style.display = "";
+		      } else {
+		        tr[i].style.display = "none";
+		      }
+		    }       
+		  }
+		}
 	</script>
 	<style type="text/css" media="print">
 	    button.btn.NonPrintable
@@ -35,11 +55,10 @@
 <body>
 	<div class="container-fluid col-12">
 		<button class="btn btn-warning NonPrintable" onclick="printscreen()">Print</button>
-		<!-- <input type="text" id="search" placeholder="Search"> -->
-		<!-- <input type="text" id="nameInput" onkeyup="myFunction()" placeholder="Search For Name..."> -->
+		<input type="text" id="search" placeholder="Search">
+		<input type="text" id="nameInput" onkeyup="myFunction()" placeholder="Search For Name...">
 	</div>
-	<div class="container-fluid">
-	<table id="myTable" class="table table-bordered table-hover table-striped">
+	<table id="dtBasicExample" class="table table-bordered table-hover table-striped">
 		<thead>
 			<th>Membership Number</th>
 			<th>Name</th>
@@ -52,9 +71,8 @@
 			<th>Claim Amount</th>
 			<th>Sanctioned Amount</th>
 		</thead>
-		<tbody>
 		@foreach($res as $item)
-
+		<tbody id="myTable">
 			<tr>
 			<td>{{$item->mem_no}}</td>
 			<td>{{$item->name}}</td>
@@ -68,10 +86,7 @@
 			<td>{{$item->bamt}}</td>
 			</tr>
 		@endforeach
-
-		</tbody>
 	</table>
-</div>
 	<div class="text-center">
     	<button onclick="back()" class="btn btn-primary NonPrintable">Back</button>
     </div>
